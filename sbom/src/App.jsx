@@ -4,7 +4,7 @@ import {
   Hero,
   Feature,
 } from "./components";
-
+import Result from "./components/result";
 const App = () => (
   <div className="w-full bg-primary-hero-bluecolor">
     <Navbar />
@@ -16,5 +16,4 @@ const App = () => (
     </div>
   </div>
 );
-
 export default App;
