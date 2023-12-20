@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d18e8f28-675d-402a-9985-520b54e5968d",
+  "serialNumber": "urn:uuid:deee39f6-94f0-4e2b-a7e8-898ccc3f3b3c",
   "version": 1,
   "metadata": {
-    "timestamp": "2023-12-20T06:26:38.440Z",
+    "timestamp": "2023-12-20T08:07:51.531Z",
     "tools": {
       "components": [
         {
@@ -1390,6 +1390,31 @@
     },
     {
       "group": "",
+      "name": "fs",
+      "version": "0.0.1-security",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "dd763d7b5a4fd02544502763e4199f219c51053483c9c9dbaa120e19e73d418b66547d9f6cba63f3a0855a4acd3a4b7f16fb72e0a646e654e094bf63fe027cef"
+        }
+      ],
+      "purl": "pkg:npm/fs@0.0.1-security",
+      "type": "library",
+      "bom-ref": "pkg:npm/fs@0.0.1-security",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "/home/gaurangi/Study Material/GUI/sbom-electron-gui/server/package-lock.json"
+        },
+        {
+          "name": "ImportedModules",
+          "value": "fs"
+        }
+      ]
+    },
+    {
+      "group": "",
       "name": "multer",
       "version": "1.4.5-lts.1",
       "scope": "optional",
@@ -1738,6 +1763,94 @@
       "purl": "pkg:npm/xtend@4.0.2",
       "type": "library",
       "bom-ref": "pkg:npm/xtend@4.0.2",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "/home/gaurangi/Study Material/GUI/sbom-electron-gui/server/package-lock.json"
+        }
+      ]
+    },
+    {
+      "group": "",
+      "name": "mysql",
+      "version": "2.18.1",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "05c6be824d985a6aa9d947fa93934512eaf063fd2d77472979b02e705a58ff78e1af0ad51aec54dae4050878d4d7d4897e37b4c90be2fab55676aefc851e658a"
+        }
+      ],
+      "purl": "pkg:npm/mysql@2.18.1",
+      "type": "library",
+      "bom-ref": "pkg:npm/mysql@2.18.1",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "/home/gaurangi/Study Material/GUI/sbom-electron-gui/server/package-lock.json"
+        },
+        {
+          "name": "ImportedModules",
+          "value": "mysql"
+        }
+      ]
+    },
+    {
+      "group": "",
+      "name": "readable-stream",
+      "version": "2.3.7",
+      "scope": "optional",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "11b868f0ae2321b1c0c67bb18bba38d8ead9805fd94cd72c663ea744ac949a484b16af021c8b69fdfcba85066e6663ff9f7c99f550546e9e33cff997f219983f"
+        }
+      ],
+      "purl": "pkg:npm/readable-stream@2.3.7",
+      "type": "library",
+      "bom-ref": "pkg:npm/readable-stream@2.3.7",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "/home/gaurangi/Study Material/GUI/sbom-electron-gui/server/package-lock.json"
+        }
+      ]
+    },
+    {
+      "group": "",
+      "name": "bignumber.js",
+      "version": "9.0.0",
+      "scope": "optional",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "b7f398861276483f9818141c8d8f06cf30c7124f5fde77abc63b5f6bab653177deedfaecfd6a3386f08da06be93343f76cd7f71aae5944c946af97f7af8fcdf0"
+        }
+      ],
+      "purl": "pkg:npm/bignumber.js@9.0.0",
+      "type": "library",
+      "bom-ref": "pkg:npm/bignumber.js@9.0.0",
+      "properties": [
+        {
+          "name": "SrcFile",
+          "value": "/home/gaurangi/Study Material/GUI/sbom-electron-gui/server/package-lock.json"
+        }
+      ]
+    },
+    {
+      "group": "",
+      "name": "sqlstring",
+      "version": "2.3.1",
+      "scope": "optional",
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "a2803387feddc481b9fae0e2935cff45dd6f962d3edfc8b36611b349adf817047b21b7a53d608229234897c8e52ff17b111bf2f020768cd78cd44f62f665cc01"
+        }
+      ],
+      "purl": "pkg:npm/sqlstring@2.3.1",
+      "type": "library",
+      "bom-ref": "pkg:npm/sqlstring@2.3.1",
       "properties": [
         {
           "name": "SrcFile",
@@ -2854,6 +2967,10 @@
       ]
     },
     {
+      "ref": "pkg:npm/fs@0.0.1-security",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/append-field@1.0.0",
       "dependsOn": []
     },
@@ -2946,6 +3063,34 @@
         "pkg:npm/object-assign@4.1.1",
         "pkg:npm/type-is@1.6.18",
         "pkg:npm/xtend@4.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/readable-stream@2.3.7",
+      "dependsOn": [
+        "pkg:npm/core-util-is@1.0.3",
+        "pkg:npm/inherits@2.0.4",
+        "pkg:npm/isarray@1.0.0",
+        "pkg:npm/process-nextick-args@2.0.1",
+        "pkg:npm/string_decoder@1.1.1",
+        "pkg:npm/util-deprecate@1.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/bignumber.js@9.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/sqlstring@2.3.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/mysql@2.18.1",
+      "dependsOn": [
+        "pkg:npm/bignumber.js@9.0.0",
+        "pkg:npm/readable-stream@2.3.7",
+        "pkg:npm/safe-buffer@5.1.2",
+        "pkg:npm/sqlstring@2.3.1"
       ]
     },
     {
@@ -3144,7 +3289,9 @@
       "dependsOn": [
         "pkg:npm/cors@2.8.5",
         "pkg:npm/express@4.18.2",
+        "pkg:npm/fs@0.0.1-security",
         "pkg:npm/multer@1.4.5-lts.1",
+        "pkg:npm/mysql@2.18.1",
         "pkg:npm/nodemon@3.0.2"
       ]
     }
