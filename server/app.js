@@ -24,19 +24,31 @@ const runSbomGenerator = (pathh) => {
     const destinationFilePath = path.join(destinationFolderPath, newFileName);
     console.log(fs.existsSync(sourceFilePath));
     fs.renameSync(sourceFilePath, destinationFilePath);
-
-    // Insert the new path into MySQL database
-    const insertQuery = `INSERT INTO data (html,uploaded) VALUES ('${destinationFilePath}', '${new Date()
-      .toISOString()
-      .slice(0, 19)
-      .replace("T", " ")}')`;
-    con.query(insertQuery, (err, results) => {
+    con.query(`SELECT MAX(id) FROM data`, (err, results) => {
       if (err) {
-        console.error("Error inserting data:", err);
+        console.error("Error retrieving data:", err);
       } else {
-        console.log("Data inserted successfully. Row ID:", results.insertId);
+        let id = (results[0]["MAX(id)"]) ? results[0]["MAX(id)"] : 0;
+        const insertQuery = `INSERT INTO data (id, html,uploaded) VALUES (${
+          id + 1
+        }, '${destinationFilePath}', '${new Date()
+          .toISOString()
+          .slice(0, 19)
+          .replace("T", " ")}')`;
+        con.query(insertQuery, (err, results) => {
+          if (err) {
+            console.error("Error inserting data:", err);
+          } else {
+            console.log(
+              "Data inserted successfully. Row ID:",
+              results.insertId
+            );
+          }
+        });
       }
     });
+
+    // Insert the new path into MySQL database
   });
 };
 
