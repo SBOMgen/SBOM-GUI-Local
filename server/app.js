@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 const runSbomGenerator = (path) => {
-    const sbomCommand = `sbomgen -p ${path} -f json`;
+    const sbomCommand = `sbomgentwo -p ${path} -f json --vul`;
 
     exec(sbomCommand, (error, stdout, stderr) => {
         console.log(stdout);
@@ -18,9 +18,9 @@ const runSbomGenerator = (path) => {
 
 app.post('/upload', (req, res) => {
     const filePath = req.body.filePath;
-    // if (!filePath) {
-    //     return res.status(400).json({ error: 'File path is required.' });
-    // }
+    if (!filePath) {
+        return res.status(400).json({ error: 'File path is required.' });
+    }
     console.log(filePath)
     runSbomGenerator(filePath);
     res.json({ message: 'File path received successfully!' });
