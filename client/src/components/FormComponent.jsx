@@ -7,7 +7,7 @@ const FormComponent = () => {
         event.preventDefault();
         console.log(inputValue);
         try {
-            const response = await fetch("http://localhost:5000/upload", {
+            const response = await fetch("http://localhost:4000/upload", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
