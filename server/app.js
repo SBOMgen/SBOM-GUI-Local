@@ -17,9 +17,9 @@ const runSbomGenerator = (pathh) => {
     console.log(stdout);
     const sourceFolderPath = path.resolve(process.cwd(), "./reports");
     const destinationFolderPath = path.resolve(process.cwd(), "./reports");
-    const originalFileName = "depscan.html";
+    const originalFileName = "sbom-universal.vdr.json";
     const timestamp = new Date().toISOString().replace(/[^0-9]/g, "");
-    const newFileName = `report_${timestamp}.html`;
+    const newFileName = `report_${timestamp}.json`;
     const sourceFilePath = path.join(sourceFolderPath, originalFileName);
     const destinationFilePath = path.join(destinationFolderPath, newFileName);
     console.log(fs.existsSync(sourceFilePath));
@@ -83,10 +83,7 @@ app.get("/reports/:id", (req, res) => {
           // Send the HTML content to the frontend
           return res.status(200).json({
             success: true,
-            data: data
-              .replace(/\n/g, "")
-              .replace("&quot;", '"')
-              .replace(/\\/g, ""),
+            data: JSON.parse(data),
           });
         }
       });
