@@ -7,13 +7,6 @@ import FileUpload from "./FileUpload";
 import FormComponent from "./FormComponent";
 
 const Hero = () => {
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [numberOfFiles, setNumberOfFiles] = useState(0);
-
-  const handleFilesSelected = (files) => {
-    setSelectedFiles(selectedFiles);
-    setNumberOfFiles(files.length);
-  };
 
   return(
   <section
@@ -48,8 +41,6 @@ const Hero = () => {
       /> */}
       <div className="">
         <div className="px-4 py-4 flex items-center">
-          <FileUpload onFilesSelected={handleFilesSelected} />
-          <p className="text-white ml-2">{numberOfFiles} item(s)</p>
         </div>
         {/* <InputPath /> */}
       </div>

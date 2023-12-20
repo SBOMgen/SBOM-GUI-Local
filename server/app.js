@@ -1,38 +1,32 @@
 const { exec } = require('child_process');
-const path = '../maven/maven-modular/';
-const packageName = 'devcoderopop';
-const checkCommand = `pip show ${packageName}`;
-const sbomCommand = `sbomgen ${path}`;
+const express = require('express');
 
-const runSbomGenerator = () => {
+const cors = require('cors');
+const app = express();
+const PORT = 5000;
+app.use(cors())
+app.use(express.json());
+
+
+const runSbomGenerator = (path) => {
+    const sbomCommand = `sbomgen -p ${path} -f json`;
+
     exec(sbomCommand, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error : ${error.message}`);
-            return;
-        }
-
         console.log(stdout);
     });
 };
 
-exec(checkCommand, (checkError, checkStdout, checkStderr) => {
-    if (checkError) {
-        console.error(`Error checking if ${packageName} is installed: ${checkError.message}`);
-        return;
-    }
+app.post('/upload', (req, res) => {
+    const filePath = req.body.filePath;
+    // if (!filePath) {
+    //     return res.status(400).json({ error: 'File path is required.' });
+    // }
+    console.log(filePath)
+    runSbomGenerator(filePath);
+    res.json({ message: 'File path received successfully!' });
 
-    if (checkStdout) {
-        runSbomGenerator();
-    } else {
-        const installCommand = `pip install ${packageName}`;
+});
 
-        exec(installCommand, (installError, installStdout, installStderr) => {
-            if (installError) {
-                console.error(`Error installing ${packageName}: ${installError.message}`);
-                return;
-            }
-            console.log(`${packageName} installed successfully`);
-            runSbomGenerator();
-        });
-    }
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
